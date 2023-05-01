@@ -3,7 +3,7 @@ import React, { Suspense, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Vector2 } from "three/src/math/Vector2";
 import { damp } from "three/src/math/MathUtils";
-import { MeshDistortMaterial } from "@react-three/drei";
+import { MeshDistortMaterial, OrbitControls } from "@react-three/drei";
 import {
   EffectComposer,
   RenderPass,
@@ -134,6 +134,7 @@ const ThreeJSPageScene = (props: any) => {
       shadows={{ enabled: true, needsUpdate: true }}
       camera={{ position: [4.2, 0, 0] }}
     >
+      <OrbitControls />
       {!inView && <DisableRender />}
       <Suspense fallback={null}>
         {/* <OrbitControls /> */}

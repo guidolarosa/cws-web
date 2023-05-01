@@ -50,10 +50,10 @@ const Sidebar = () => {
       <div className="mt-auto border-t p-4 flex justify-center">
         <span>REACH OUT!</span>
       </div>
-      <div className="flex border-t item-center">
-        <div className="p-4 border-r bg-white text-stone-900">ARG</div>
-        <div className="p-4 flex justify-center w-full">
-          <span className="w-8 flex justify-center">
+      <div className="flex border-t item-center h-12">
+        <div className="px-4 border-r bg-white flex text-stone-900 items-center">ARG</div>
+        <div className="px-4 flex justify-center w-full items-center">
+          <span className="w-8 flex justify-center text-2xl">
             {time}
           </span>
         </div>
