@@ -16,7 +16,7 @@ export default function Home() {
       <div className={'w-full flex items-center justify-center'}>
         {/* <TJSScene /> */}
         <TJSBlob />
-        <span className="absolute text-5xl text-center leading-loose max-w-2xl">
+        <span className="absolute text-5xl text-center leading-loose max-w-2xl pointer-events-none">
           {locale.uiConstants.homepage.heroText}
         </span>
       </div>

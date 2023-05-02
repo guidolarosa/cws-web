@@ -1,4 +1,5 @@
 import Head from "next/head";
+import InfoSection from "@/components/InfoSection/InfoSection";
 
 export default function News() {
   return (
@@ -6,13 +7,7 @@ export default function News() {
       <Head>
         <title>Coyote Web Studio</title>
       </Head>
-      <div className={"w-full"}>
-        <div className="h-24 border-b flex items-center px-8">
-          <h1 className={"text-4xl"}>News</h1>
-        </div>
-      </div>
-      <div>          
-      </div>
+      <InfoSection title="News" />
     </main>
   );
 }

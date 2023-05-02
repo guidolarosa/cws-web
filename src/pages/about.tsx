@@ -1,6 +1,6 @@
 import Head from "next/head";
-
 import { work } from "@/localization/en/work/work";
+import InfoSection from "@/components/InfoSection/InfoSection";
 
 export default function About() {
   return (
@@ -8,14 +8,11 @@ export default function About() {
       <Head>
         <title>Guido La Rosa</title>
       </Head>
-      <div className={"w-full"}>
-        <div className="h-24 border-b flex items-center px-8">
-          <h1 className={"text-4xl"}>About Us</h1>
+      <InfoSection title="About us">
+        <div className="p-8">
+          <h2></h2>
         </div>
-      </div>
-      <div className="p-8">
-        <h2></h2>
-      </div>
+      </InfoSection>
     </main>
   );
 }
