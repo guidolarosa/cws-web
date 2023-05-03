@@ -16,7 +16,7 @@ const InfoSection: React.FC<Props> = ({title, children, backLink}) => {
         <div className={`h-24 border-b flex items-center ${!backLink ? 'px-4' : ''}`}>
           {backLink && (
             <div className="h-24 border-b flex">
-              <Link className="w-24 border-r flex items-center px-8 hover:bg-white hover:text-black transition" href={backLink}>
+              <Link className="w-24 border-r flex items-center px-8 hover:bg-primary hover:text-black hover:bg-primary-500 dark:hover:bg-dark-500 transition" href={backLink}>
                 <RiArrowLeftLine size={'3rem'} style={{transform: 'scale(2)'}}/>
               </Link>
             </div>

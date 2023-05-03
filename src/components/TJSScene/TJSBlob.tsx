@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import React, { Suspense, useMemo, useRef, useState } from "react";
+import React, { Suspense, useMemo, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Vector2 } from "three/src/math/Vector2";
 import { damp } from "three/src/math/MathUtils";
@@ -11,8 +11,16 @@ import {
   ChromaticAberrationEffect,
   SMAAEffect,
   SMAAPreset,
+  GlitchEffect,
+  GlitchMode,
+  PixelationEffect,
+  ScanlineEffect
 } from "postprocessing";
 import { useInView } from "react-intersection-observer";
+import { theme } from "./../../../tailwind.config";
+import colors from "tailwindcss/colors";
+import { checkDarkTheme, setDarkThemeObserver } from "@/utils/utils";
+// import { Color } from "three";
 
 const Effect = ({ children }: any) => {
   const { gl, camera, scene } = useThree();
@@ -23,6 +31,17 @@ const Effect = ({ children }: any) => {
     comp.addPass(
       new EffectPass(camera, new SMAAEffect({ preset: SMAAPreset.ULTRA }))
     );
+    comp.addPass(
+      new EffectPass(camera, new GlitchEffect())
+    )
+    comp.addPass(
+      new EffectPass(camera, new ScanlineEffect({
+        density: 2
+      }))
+    )
+    // comp.addPass(
+    //   new EffectPass(camera, new PixelationEffect(5))
+    // )
     return comp;
   }, [gl, scene, camera]);
 
@@ -36,7 +55,15 @@ const CustomPointLight = ({ color, intensity, position, resolution }: any) => {
   return <pointLight args={[color, 3]} position={position} />;
 };
 
-const DistortedSphereMesh = ({ resolution } : {resolution : number}) => {
+const DistortedSphereMesh = ({
+  resolution,
+  wireframe,
+  color
+}: {
+  resolution: number;
+  wireframe: boolean;
+  color: string;
+}) => {
   const BASE_DISTORT = 0.65;
   const MAX_DISTORT = 1.25;
 
@@ -48,9 +75,9 @@ const DistortedSphereMesh = ({ resolution } : {resolution : number}) => {
   const [mouseOver, setMouseOver] = useState<boolean>(false);
   const [clicking, setClicking] = useState<boolean>(false);
 
-  useFrame(({clock} : any) => {
+  useFrame(({ clock }: any) => {
     // console.log('frame');
-    meshRef.current.rotation.y = clock.elapsedTime / 10
+    meshRef.current.rotation.y = clock.elapsedTime / 10;
   });
 
   useFrame((state, delta) => {
@@ -69,7 +96,7 @@ const DistortedSphereMesh = ({ resolution } : {resolution : number}) => {
       ref={meshRef}
       castShadow
       receiveShadow
-      scale={2.5}
+      scale={2}
       onPointerEnter={(e) => {
         // setMouseOver(true);
       }}
@@ -88,13 +115,13 @@ const DistortedSphereMesh = ({ resolution } : {resolution : number}) => {
         args={[1, resolution ? resolution : 50, resolution ? resolution : 50]}
       />
       <MeshDistortMaterial
-        wireframe
+        wireframe={wireframe}
         ref={meshDistortMatRef}
-        color="#666666"
+        color={color}
         distort={BASE_DISTORT}
         speed={BASE_SPEED}
         metalness={0.3}
-        roughness={0.8}
+        roughness={0.9}
       />
     </mesh>
   );
@@ -119,6 +146,17 @@ const DistortedSphereMesh = ({ resolution } : {resolution : number}) => {
 
 const ThreeJSPageScene = (props: any) => {
   const { ref, inView } = useInView();
+  const [blobColor, setBlobColor] = useState(theme.colors.primary['500']);
+
+  useEffect(() => {
+    setDarkThemeObserver((e : any) => {
+      setBlobColor(
+        e[0].target.classList[0] === "dark"
+          ? theme.colors.dark["500"]
+          : theme.colors.primary["500"]
+      );
+    })
+  }, []);
 
   const DisableRender = () => useFrame(() => null, 1000);
 
@@ -139,19 +177,19 @@ const ThreeJSPageScene = (props: any) => {
       <Suspense fallback={null}>
         {/* <OrbitControls /> */}
         {/* <axesHelper args={[2]} /> */}
-        <ambientLight intensity={4} color={"white"} />
+        <ambientLight intensity={2} color={colors.amber["100"]} />
         <CustomPointLight
-          color={"white"}
+          color={theme.colors.primary["500"]}
           position={[-4, 4, 8]}
           intensity={12}
         />
         <CustomPointLight
-          color="#4e42b9"
+          color={theme.colors.primary["950"]}
           position={[6, -8, -8]}
           intensity={4}
         />
-        <CustomPointLight color="#d82525" position={[6, 4, 4]} intensity={10} />
-        <DistortedSphereMesh {...props} />
+        <CustomPointLight color={colors.amber['500']} position={[6, 4, 4]} intensity={10} />
+        <DistortedSphereMesh {...props} color={blobColor}/>
         <Effect />
       </Suspense>
     </Canvas>

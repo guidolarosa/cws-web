@@ -6,7 +6,7 @@ import getLocale from '@/localization';
 import { useRouter } from 'next/router';
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [time, setTime] = useState('');
 
   const router = useRouter();
@@ -39,7 +39,7 @@ const Sidebar = () => {
           <Link href={item.href} key={item.label}>
             <li
               className={
-                "flex items-center px-4 border-0 border-b w-full transition cursor-pointer black hover:bg-stone-50 hover:text-stone-800 h-12"
+                "flex items-center px-4 border-0 border-b w-full transition cursor-pointer black hover:bg-primary-500 hover:text-primary-50 h-12 bg-primary-50 text-primary-500 dark:bg-dark-950 dark:hover:bg-dark-500 dark:text-dark-500 dark:hover:text-dark-950"
               }
             >
               {item.label}
@@ -51,7 +51,7 @@ const Sidebar = () => {
         <span>REACH OUT!</span>
       </div>
       <div className="flex border-t item-center h-12">
-        <div className="px-4 border-r bg-white flex text-stone-900 items-center">ARG</div>
+        <div className="px-4 border-r bg-primary-500 dark:bg-dark-500 flex text-stone-900 items-center">ARG</div>
         <div className="px-4 flex justify-center w-full items-center">
           <span className="w-8 flex justify-center text-2xl">
             {time}

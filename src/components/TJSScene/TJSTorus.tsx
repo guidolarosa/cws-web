@@ -1,6 +1,8 @@
 import Head from "next/head";
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import { theme } from './../../../tailwind.config'
+import { checkDarkTheme, setDarkThemeObserver } from "@/utils/utils";
 
 const Torus = (props : any) => {
   // This reference will give us direct access to the mesh
@@ -26,23 +28,36 @@ const Torus = (props : any) => {
       onPointerOut={(event) => setHover(false)}
     >
       <torusGeometry args={[10, 3, 20, 64]}/>
-      <meshStandardMaterial color={'white'} wireframe />
+      <meshStandardMaterial color={props.color} wireframe />
     </mesh>
   )
 }
 
 export default function TJSTorus(props : any) {
+
+  const [torusColor, setTorusColor] = useState(theme.colors.primary['500']);
+
+  useEffect(() => {
+    setDarkThemeObserver((e : any) => {
+      setTorusColor(
+        e[0].target.classList[0] === "dark"
+          ? theme.colors.dark["500"]
+          : theme.colors.primary["500"]
+      );
+    })
+  }, []);
+
   return (
     <Canvas 
       className={'w-full h-full'}
       camera={{
         position: [0, 0, -15],
-        rotation: [-Math.PI / 2, 0, 0]
+        rotation: [-Math.PI / 2, 0, Math.PI / 2]
       }}
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-      <Torus position={[0, 0, 0]} scale={props.scale ? props.scale : 1.75}/>
+      <Torus position={[0, 0, 0]} scale={props.scale ? props.scale : 1.75} color={torusColor}/>
     </Canvas>
   );
 }

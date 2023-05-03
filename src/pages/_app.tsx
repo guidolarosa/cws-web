@@ -13,9 +13,9 @@ const unbounded = Unbounded({ subsets: ["latin"] });
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
-    <div className={`${unbounded.className} h-[100vh] flex flex-col overflow-hidden`}>
+    <div className={`${unbounded.className} h-[100vh] flex flex-col overflow-hidden text-primary-500 dark:text-dark-500 bg-primary-50 dark:bg-dark-950`}>
       <div
-        className={`bg-lime-500 fixed w-full h-[100vh] z-10 mix-blend-multiply pointer-events-none`}
+        className={` fixed w-full h-[100vh] z-10 mix-blend-multiply pointer-events-none`}
       />
       <SiteHeader />
       <div className={"w-full h-[calc(100vh-130px)] flex"}>
@@ -28,12 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
             <TJSTorus/>
           </div>
           <div className="border-b h-1/3 w-full last:border-b-0">
-            <TJSBlob resolution={8}/>
-            {/* <TJSBounce /> */}
+            <TJSBlob resolution={8} wireframe />
           </div>
           <div className="border-b h-1/3 w-full last:border-b-0">
             {/* <TJSBlob resolution={6}/> */}
             <TJSScene scale={1.5}/>
+            {/* <TJSBounce /> */}
           </div>
         </div>
       </div> 
