@@ -46,7 +46,7 @@ const Plane = (props: any) => {
 };
 export default function TJSScene(props: any) {
   const [sphereColor, setSphereColor] = useState(theme.colors.primary['500']);
-  const [planeColor, setPlaneColor] = useState(theme.colors.white);
+  const [planeColor, setPlaneColor] = useState('#FFFFFF');
 
   useEffect(() => {
     setDarkThemeObserver((e : any) => {
@@ -57,8 +57,8 @@ export default function TJSScene(props: any) {
       );
       setPlaneColor(
         e[0].target.classList[0] === "dark"
-          ? theme.colors.black
-          : theme.colors.white
+          ? '#000000'
+          : '#FFFFFF'
       );
     });
   }, []);
