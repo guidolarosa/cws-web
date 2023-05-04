@@ -4,55 +4,24 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Vector2 } from "three/src/math/Vector2";
 import { damp } from "three/src/math/MathUtils";
 import { MeshDistortMaterial, OrbitControls } from "@react-three/drei";
-import {
-  EffectComposer,
-  RenderPass,
-  EffectPass,
-  ChromaticAberrationEffect,
-  SMAAEffect,
-  SMAAPreset,
-  GlitchEffect,
-  GlitchMode,
-  PixelationEffect,
-  ScanlineEffect
-} from "postprocessing";
+import GlitchEffect from './GlitchEffect';
 import { useInView } from "react-intersection-observer";
 import { theme } from "./../../../tailwind.config";
 import colors from "tailwindcss/colors";
 import { setDarkThemeObserver } from "@/utils/utils";
-// import { Color } from "three";
-
-const Effect = ({ children }: any) => {
-  const { gl, camera, scene } = useThree();
-
-  const composer = useMemo(() => {
-    const comp = new EffectComposer(gl);
-    comp.addPass(new RenderPass(scene, camera));
-    comp.addPass(
-      new EffectPass(camera, new SMAAEffect({ preset: SMAAPreset.ULTRA }))
-    );
-    comp.addPass(
-      new EffectPass(camera, new GlitchEffect())
-    )
-    comp.addPass(
-      new EffectPass(camera, new ScanlineEffect({
-        density: 2
-      }))
-    )
-    // comp.addPass(
-    //   new EffectPass(camera, new PixelationEffect(5))
-    // )
-    return comp;
-  }, [gl, scene, camera]);
-
-  useFrame(() => {
-    composer.render();
-  }, 1);
-  return <></>;
-};
 
 const CustomPointLight = ({ color, intensity, position, resolution }: any) => {
   return <pointLight args={[color, 3]} position={position} />;
+};
+
+const Plane = (props: any) => {
+  const mesh: any = useRef();
+  return (
+    <mesh {...props} ref={mesh} scale={10} rotation={[0, 0, 0]}>
+      <planeGeometry args={[10, 10]} />
+      <meshStandardMaterial color={'#FFFFFF'} />
+    </mesh>
+  );
 };
 
 const DistortedSphereMesh = ({
@@ -147,14 +116,29 @@ const DistortedSphereMesh = ({
 const ThreeJSPageScene = (props: any) => {
   const { ref, inView } = useInView();
   const [blobColor, setBlobColor] = useState(theme.colors.primary['500']);
+  const [planeColor, setPlaneColor] = useState('transparent');
 
-  useEffect(() => {
-    setDarkThemeObserver((e : any) => {
+  const setColors = () => {
+    const html =  document.querySelector('html');
+
+    if (html) {
       setBlobColor(
-        e[0].target.classList[0] === "dark"
+        html.classList[0] === "dark"
           ? theme.colors.dark["500"]
           : theme.colors.primary["500"]
       );
+      setPlaneColor(
+        html.classList[0] === "dark"
+          ? theme.colors.dark['950']
+          : theme.colors.primary['50']
+      );
+    }
+  }
+
+  useEffect(() => {
+    setColors();
+    setDarkThemeObserver((e : any) => {
+      setColors();
     })
   }, []);
 
@@ -169,14 +153,17 @@ const ThreeJSPageScene = (props: any) => {
         stencil: false,
         depth: false,
       }}
+      // className="blur-xl"
       shadows={{ enabled: true, needsUpdate: true }}
       camera={{ position: [4.2, 0, 0] }}
     >
+      <color attach="background" args={[planeColor]} />
       <OrbitControls />
       {!inView && <DisableRender />}
       <Suspense fallback={null}>
         {/* <OrbitControls /> */}
         {/* <axesHelper args={[2]} /> */}
+        {/* <Plane /> */}
         <ambientLight intensity={2} color={colors.amber["100"]} />
         <CustomPointLight
           color={theme.colors.primary["500"]}
@@ -190,7 +177,7 @@ const ThreeJSPageScene = (props: any) => {
         />
         <CustomPointLight color={colors.amber['500']} position={[6, 4, 4]} intensity={10} />
         <DistortedSphereMesh {...props} color={blobColor}/>
-        <Effect />
+        <GlitchEffect />
       </Suspense>
     </Canvas>
   );

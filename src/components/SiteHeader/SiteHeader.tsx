@@ -12,9 +12,6 @@ export default function SiteHeader() {
         <Link href={"/"} className="flex">
           <h1 className={"text-4xl flex"}>
             Coyote Web Studio
-            <div className="w-10 h-10 inline ml-4">
-              <TJSScene showPlane />
-            </div>
           </h1>
         </Link>
         <ThemeSwitcher />

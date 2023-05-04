@@ -18,8 +18,8 @@ module.exports = {
     },
     colors: {
       current: 'currentColor',
-      primary: colors.green,
-      dark: colors.red,
+      primary: colors.red,
+      dark: colors.lime,
       ...colors
     }
   },
