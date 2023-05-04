@@ -10,12 +10,14 @@ export default function SiteHeader() {
     <header>
       <div className="border-0 border-b flex justify-between items-center h-20 px-4 md:p-0 md:pl-4">
         <Link href={"/"} className="flex">
-          <h1 className={"text-4xl flex"}>
+          <h1 className={"text-3xl md:text-4xl flex"}>
             Coyote Web Studio
           </h1>
         </Link>
-        <ThemeSwitcher />
-        <LanguageSelector />
+        <div className="controls hidden md:flex">
+          <ThemeSwitcher />
+          <LanguageSelector />
+        </div>
       </div>
       <Marquee />
     </header>

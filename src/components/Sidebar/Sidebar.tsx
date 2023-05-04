@@ -32,7 +32,7 @@ const Sidebar = () => {
       id="sidebar"
       className={`w-full absolute border-r ${
         open ? "" : "hidden"
-      } md:flex md:relative md:w-1/4 flex-col bg-primary-200 dark:bg-dark-950`}
+      } md:flex md:relative md:w-1/3 lg:w-1/4 flex-col bg-primary-200 dark:bg-dark-950`}
     >
       <ul className="w-full">
         {locale.uiConstants.navigation.map((item: any) => (
