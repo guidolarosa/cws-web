@@ -19,7 +19,7 @@ import {
 import { useInView } from "react-intersection-observer";
 import { theme } from "./../../../tailwind.config";
 import colors from "tailwindcss/colors";
-import { checkDarkTheme, setDarkThemeObserver } from "@/utils/utils";
+import { setDarkThemeObserver } from "@/utils/utils";
 // import { Color } from "three";
 
 const Effect = ({ children }: any) => {

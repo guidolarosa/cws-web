@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { theme } from './../../../tailwind.config'
-import { checkDarkTheme } from '@/utils/utils';
 
 
 function BouncingBall(props : any) {
@@ -23,7 +21,7 @@ function BouncingBall(props : any) {
   return (
     <mesh ref={meshRef} position={[0, 0, 0]} scale={0.5}>
       <sphereBufferGeometry ref={geometryRef} args={[1, 16, 16]} />
-      <meshStandardMaterial color={checkDarkTheme() ? theme.colors.dark["500"] : theme.colors.primary["500"]} wireframe/>
+      <meshStandardMaterial color={'white'} wireframe />
     </mesh>
   );
 }

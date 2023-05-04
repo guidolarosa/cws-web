@@ -1,6 +1,10 @@
 export const checkDarkTheme = () => {
-  let html = document.querySelector('html');
-  return html?.classList.contains('dark');
+  if (document) {
+    let html = document.querySelector('html');
+    return html?.classList.contains('dark');
+  } else {
+    return false
+  }
 }
 
 export const setDarkThemeObserver = (cb : any) => {

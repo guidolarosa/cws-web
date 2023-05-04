@@ -22,6 +22,25 @@
 
 .dark * {
   border-color: theme('colors.dark.500')
+  
+}
+
+/* Track */
+.dark ::-webkit-scrollbar-track {
+  background: theme('colors.dark.900'); 
+  border-radius: 0px;
+}
+
+/* Handle */
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.dark.600'); 
+  border-radius: 0px;
+  transition: 0.25s ease-in-out all;
+}
+
+/* Handle on hover */
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.dark.500'); 
 }
 
 ::-webkit-scrollbar {
@@ -31,20 +50,20 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.2); 
+  background: theme('colors.primary.100'); 
   border-radius: 0px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: gray; 
+  background: theme('colors.primary.300'); 
   border-radius: 0px;
   transition: 0.25s ease-in-out all;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: white; 
+  background: theme('colors.primary.500'); 
 }
 
 /* Chrome, Safari, Edge, Opera */

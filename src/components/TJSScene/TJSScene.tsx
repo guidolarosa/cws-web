@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { theme } from "./../../../tailwind.config";
-import { checkDarkTheme, setDarkThemeObserver } from "@/utils/utils";
+import { setDarkThemeObserver } from "@/utils/utils";
 
 const Sphere = (props: any) => {
   // This reference will give us direct access to the mesh

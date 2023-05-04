@@ -3,7 +3,7 @@ import { checkDarkTheme } from "@/utils/utils";
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 const ThemeSwitcher = () => {
-  const [isDark, setIsDark] = useState(checkDarkTheme());
+  const [isDark, setIsDark] = useState(false);
 
   const handleThemeSwitch = () => {
     if (checkDarkTheme()) {
