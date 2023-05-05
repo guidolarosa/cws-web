@@ -18,7 +18,7 @@ export default function Work() {
         <div>
           <ul>
             {locale.workData.work.map((work : any) => (
-              <Link key={work.title} href={'/work/' + work.slug} className={'last:border-b-0 h-24 flex items-center px-4 border-b hover:bg-primary-500 hover:text-primary-50 dark:hover:bg-dark-500 dark:hover:text-dark-950 cursor-pointer transition dark:hover:shadow-md dark:hover:shadow-dark-500 relative dark:hover:z-10 z-0'}>
+              <Link key={work.title} href={'/work/' + work.slug} className={'last:border-b-0 h-24 flex items-center px-4 border-b hover:bg-primary-500 hover:text-primary-50 dark:hover:bg-dark-500 dark:hover:text-dark-950 cursor-pointer transition relative dark:hover:z-10 z-0'}>
                 <li key={work.title}>
                   <span className="mr-4 text-2xl">{work.title}</span>
                   <span className="font-light text-sm opacity-70">

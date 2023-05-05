@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { theme } from "./../../../tailwind.config";
 import colors from "tailwindcss/colors";
 import { setDarkThemeObserver } from "@/utils/utils";
+import { Vector3 } from "three";
 
 const CustomPointLight = ({ color, intensity, position, resolution }: any) => {
   return <pointLight args={[color, 3]} position={position} />;
@@ -27,16 +28,18 @@ const Plane = (props: any) => {
 const DistortedSphereMesh = ({
   resolution,
   wireframe,
-  color
+  color,
+  position
 }: {
   resolution: number;
   wireframe: boolean;
   color: string;
+  position: any;
 }) => {
   const BASE_DISTORT = 0.65;
-  const MAX_DISTORT = 1.25;
+  const MAX_DISTORT = 20;
 
-  const BASE_SPEED = 1.1;
+  const BASE_SPEED = 3;
 
   const meshRef = useRef<any>(null);
   const meshDistortMatRef = useRef<any>(null);
@@ -60,6 +63,8 @@ const DistortedSphereMesh = ({
     }
   });
 
+  // alert(position)
+
   return (
     <mesh
       ref={meshRef}
@@ -78,7 +83,8 @@ const DistortedSphereMesh = ({
       onPointerUp={(e) => {
         // setClicking(false);
       }}
-    >
+      position={position}
+      >
       <sphereBufferGeometry
         attach="geometry"
         args={[1, resolution ? resolution : 50, resolution ? resolution : 50]}
@@ -158,7 +164,7 @@ const ThreeJSPageScene = (props: any) => {
       camera={{ position: [4.2, 0, 0] }}
     >
       <color attach="background" args={[planeColor]} />
-      <OrbitControls />
+      <OrbitControls autoRotate />
       {!inView && <DisableRender />}
       <Suspense fallback={null}>
         {/* <OrbitControls /> */}
@@ -176,7 +182,16 @@ const ThreeJSPageScene = (props: any) => {
           intensity={4}
         />
         <CustomPointLight color={colors.amber['500']} position={[6, 4, 4]} intensity={10} />
-        <DistortedSphereMesh {...props} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[-10, -10, -10]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[10, -10, 10]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[-10, 10, 10]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[-12, -8, 5]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[12, 8, -3]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[8, -4, 5]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[0, 0, 0]} color={blobColor}/>
+        {/* <DistortedSphereMesh {...props} position={[-4, 0, 0]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[-4, 0, 0]} color={blobColor}/>
+        <DistortedSphereMesh {...props} color={blobColor}/> */}
         <GlitchEffect />
       </Suspense>
     </Canvas>
