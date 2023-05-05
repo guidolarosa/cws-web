@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { checkDarkTheme } from "@/utils/utils";
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 const ThemeSwitcher = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
   const handleThemeSwitch = () => {
     if (checkDarkTheme()) {

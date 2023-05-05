@@ -11,7 +11,7 @@ interface Props {
 
 const InfoSection: React.FC<Props> = ({title, children, backLink}) => {
   return (
-    <>
+    <div className="h-[calc(100vh-8.5rem)] w-full flex flex-col overflow-y-hidden">
       <div className={"w-full"}>
         <div className={`h-24 border-b flex items-center bg-primary-100 dark:bg-dark-900 ${!backLink ? 'px-4' : ''}`}>
           {backLink && (
@@ -24,8 +24,10 @@ const InfoSection: React.FC<Props> = ({title, children, backLink}) => {
           <h1 className={`text-4xl flex items-center ${backLink ? 'px-8' : ''}`}>{title}</h1>
         </div>
       </div>
-      {children}
-    </>
+      <div className={"w-full overflow-auto"}>
+        {children}
+      </div>
+    </div>
   );
 };
 
