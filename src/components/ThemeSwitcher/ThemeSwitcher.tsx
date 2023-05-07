@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { checkDarkTheme } from "@/utils/utils";
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = (props : any) => {
   const [isDark, setIsDark] = useState<boolean>(true);
 
   const handleThemeSwitch = () => {
@@ -16,7 +16,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div onClick={handleThemeSwitch}>
+    <div onClick={handleThemeSwitch} className={`${props.className}`}>
       {isDark ? (
           <MdOutlineLightMode fontSize={'1.8rem'}/>
         ) : (

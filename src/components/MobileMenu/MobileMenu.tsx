@@ -15,16 +15,16 @@ const MobileMenu = (props : any) => {
       />
       <Controls 
         className="mt-auto h-auto z-10"
-        controlStyles="aspect-auto md:aspect-square bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0"
+        controlStyles="aspect-auto md:aspect-square bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex"
         controls={[
           {
-            element: <ThemeSwitcher />
+            element: <ThemeSwitcher className="h-full w-full flex items-center justify-center" />
           },
           {
-            element: <Link href="" locale="en">EN</Link>
+            element: <Link className="h-full w-full flex items-center justify-center" href="" locale="en">EN</Link>
           },
           {
-            element: <Link href="" locale="es">ES</Link>
+            element: <Link className="h-full w-full flex items-center justify-center" href="" locale="es">ES</Link>
           },
         ]}
       >
