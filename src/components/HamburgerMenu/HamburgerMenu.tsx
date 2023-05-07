@@ -10,6 +10,8 @@ export default function HamburgerMenu(props : any) {
     setActive(!active)
   }
 
+  const controlStyles = `absolute h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-50 group-hover:bg-primary-50 transition-all`
+
   return (
     <>
       <style>{`
@@ -26,10 +28,10 @@ export default function HamburgerMenu(props : any) {
         
       `}</style>
       <div className={`${active ? 'active' : ''} hamburger-menu relative w-6 h-4 flex items-center flex-column justify-center`} onClick={handleHamburgerClick}>
-        <div className="absolute top-0 h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-950 group-hover:bg-primary-500 transition-all"></div>
-        <div className="absolute top-[50%] h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-950 group-hover:bg-primary-500 transition-all"></div>
-        <div className="absolute top-[50%] h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-950 group-hover:bg-primary-500 transition-all"></div>
-        <div className="absolute top-[100%] h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-950 group-hover:bg-primary-500 transition-all"></div>
+        <div className={`${controlStyles} top-0`}></div>
+        <div className={`${controlStyles} top-[50%]`}></div>
+        <div className={`${controlStyles} top-[50%]`}></div>
+        <div className={`${controlStyles} top-[100%]`}></div>
       </div>
     </>
   );

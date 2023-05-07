@@ -9,7 +9,7 @@ export default function About() {
         <title>Coyote Web Studio</title>
       </Head>
       <InfoSection title={'Services'}>
-        <div className="px-8">
+        <div className="p-4 md:p-8">
           <div className="header text-4xl leading-loose my-8 first:mt-0">
             We use a modern and flexible technology stack that gives you full control over your website and web applications.
           </div>

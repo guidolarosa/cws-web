@@ -16,7 +16,7 @@ const ThemeSwitcher = (props : any) => {
   };
 
   return (
-    <div onClick={handleThemeSwitch} className={`${props.className}`}>
+    <div onClick={handleThemeSwitch} className={`w-full h-full flex items-center justify-center ${props.className}`}>
       {isDark ? (
           <MdOutlineLightMode fontSize={'1.8rem'}/>
         ) : (

@@ -1,35 +1,62 @@
-import Link from 'next/link';
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import Controls from '../HeaderControls/HeaderControls';
-import Menu from '../Menu/Menu';
-import React from 'react';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
+import Link from "next/link";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import Controls from "../Controls/Controls";
+import Menu from "../Menu/Menu";
+import React from "react";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
-const MobileMenu = (props : any) => {
-
+const MobileMenu = (props: any) => {
   return (
-    <div className={`absolute top-0 w-full h-full flex flex-col ${!props.isOpen ? 'hidden' : ''}`}>
-      <Menu 
+    <div
+      className={`absolute top-0 w-full h-full flex flex-col ${
+        !props.isOpen ? "hidden" : ""
+      }`}
+    >
+      <Menu
         className="z-10"
-        onMenuItemClick={() => {props.setIsOpen(false)}}
+        onMenuItemClick={() => {
+          props.setIsOpen(false);
+        }}
       />
-      <Controls 
+      <Controls
         className="mt-auto h-auto z-10"
-        controlStyles="aspect-auto md:aspect-square bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex"
+        controlStyles="bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex"
         controls={[
           {
-            element: <ThemeSwitcher className="h-full w-full flex items-center justify-center" />
+            element: (
+              <ThemeSwitcher className="h-full w-full flex items-center justify-center" />
+            ),
           },
           {
-            element: <Link className="h-full w-full flex items-center justify-center" href="" locale="en">EN</Link>
+            element: (
+              <Link
+                className="h-full w-full flex items-center justify-center"
+                href=""
+                locale="en"
+              >
+                EN
+              </Link>
+            ),
           },
           {
-            element: <Link className="h-full w-full flex items-center justify-center" href="" locale="es">ES</Link>
+            element: (
+              <Link
+                className="h-full w-full flex items-center justify-center"
+                href=""
+                locale="es"
+              >
+                ES
+              </Link>
+            ),
           },
         ]}
-      >
-      </Controls>
-      <div className="absolute top-0 w-full h-full opacity-90 dark:bg-dark-950 bg-primary-50" onClick={() => {props.setIsOpen(false)}}/>
+      ></Controls>
+      <div
+        className="absolute top-0 w-full h-full opacity-90 dark:bg-dark-950 bg-primary-50"
+        onClick={() => {
+          props.setIsOpen(false);
+        }}
+      />
     </div>
   );
 };
