@@ -7,13 +7,14 @@ const Menu = (props : any) => {
   const locale: any = getLocale(router);
 
   return (
-    <ul className="w-full">
+    <ul className={`w-full relative flex flex-col ${props.className}`}>
         {locale.uiConstants.navigation.map((item: any) => (
-          <Link href={item.href} key={item.label}>
+          <Link href={item.href} key={item.label} className={'grow'}>
             <li
               className={
                 "flex items-center px-4 border-0 border-b w-full transition cursor-pointer black hover:bg-primary-500 hover:text-primary-50 h-12 bg-primary-100 text-primary-500 dark:bg-dark-900 dark:hover:bg-dark-500 dark:text-dark-500 dark:hover:text-dark-950"
               }
+              onClick={props.onMenuItemClick}
             >
               {item.label}
             </li>

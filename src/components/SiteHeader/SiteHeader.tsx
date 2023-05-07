@@ -38,8 +38,6 @@ export default function SiteHeader(props : any) {
           ]}
         >
         </HeaderControls>
-        <div className="controls hidden md:flex">
-        </div>
       </div>
       <Marquee />
     </header>
