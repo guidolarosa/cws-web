@@ -16,10 +16,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div
-      className="w-20 h-20 flex items-center justify-center ml-auto border-l hover:bg-primary-500 hover:text-primary-50 dark:hover:bg-dark-500 cursor-pointer dark:hover:text-dark-950"
-      onClick={handleThemeSwitch}
-    >
+    <div onClick={handleThemeSwitch}>
       {isDark ? (
           <MdOutlineLightMode fontSize={'1.8rem'}/>
         ) : (

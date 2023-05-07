@@ -8,7 +8,7 @@ const MyMarquee = () => {
   const locale : any = getLocale(router);
   return (
     <div
-          className={`bg-primary-500 dark:bg-dark-500 py-4 border-0 tracking-widest font-light text-primary-50 dark:text-primary-950`}
+          className={`bg-primary-500 dark:bg-dark-500 h-10 md:h-16 flex items-center border-0 tracking-widest font-light text-primary-50 dark:text-primary-950 text-sm md:text-md`}
         >
           <Marquee>
             <span>{locale.uiConstants.bannerLines[0]}</span>

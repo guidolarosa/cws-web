@@ -13,7 +13,8 @@ import {
   ScanlineEffect,
   ShockWaveEffect,
   NoiseEffect,
-  BlendFunction
+  BlendFunction,
+  BloomEffect
 } from "postprocessing";
 import { Vector3 } from "three";
 import { useMemo } from "react";
@@ -27,6 +28,12 @@ const Effect = ({ children }: any) => {
     comp.addPass(new RenderPass(scene, camera));
     // comp.addPass(
     //   new EffectPass(camera, new SMAAEffect({ preset: SMAAPreset.ULTRA }))
+    // );
+    // comp.addPass(
+    //   new EffectPass(camera, new BloomEffect({
+    //     intensity: 3,
+    //     height: 1
+    //   }))
     // );
     // comp.addPass(
     //   new EffectPass(camera, new NoiseEffect({blendFunction: BlendFunction.OVERLAY}))

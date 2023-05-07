@@ -46,12 +46,13 @@ const DistortedSphereMesh = ({
 
   const [mouseOver, setMouseOver] = useState<boolean>(false);
   const [clicking, setClicking] = useState<boolean>(false);
+  const [scale, setScale] = useState<number>(2);
 
   useFrame(({ clock }: any) => {
     // console.log('frame');
     meshRef.current.rotation.y = clock.elapsedTime / 10;
   });
-
+  
   useFrame((state, delta) => {
     if (meshDistortMatRef.current) {
       meshDistortMatRef.current.distort = damp(
@@ -61,6 +62,10 @@ const DistortedSphereMesh = ({
         delta
       );
     }
+
+    // console.log(simplex.current.simplex)
+
+    // setScale(simplex.current.noise(state));
   });
 
   // alert(position)
@@ -70,7 +75,7 @@ const DistortedSphereMesh = ({
       ref={meshRef}
       castShadow
       receiveShadow
-      scale={2}
+      scale={scale}
       onPointerEnter={(e) => {
         // setMouseOver(true);
       }}
@@ -164,7 +169,7 @@ const ThreeJSPageScene = (props: any) => {
       camera={{ position: [4.2, 0, 0] }}
     >
       <color attach="background" args={[planeColor]} />
-      <OrbitControls autoRotate />
+      <OrbitControls autoRotate maxDistance={15} minDistance={5}/>
       {!inView && <DisableRender />}
       <Suspense fallback={null}>
         {/* <OrbitControls /> */}

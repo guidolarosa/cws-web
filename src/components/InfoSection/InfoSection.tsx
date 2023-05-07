@@ -2,7 +2,6 @@ import React from 'react';
 import Link from "next/link";
 import { RiArrowLeftLine } from 'react-icons/ri';
 
-
 interface Props {
   title: string,
   children?: React.ReactNode,
