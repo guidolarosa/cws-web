@@ -3,9 +3,12 @@ import Marquee from "@/components/Marquee/Marquee";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import HeaderControls from '../Controls/Controls';
+import { useRouter } from "next/router";
 
 export default function SiteHeader(props : any) {
 
+  const router : any = useRouter();
+  // debugger;
   return (
     <header>
       <div className="border-0 border-b flex justify-between items-center h-16 md:h-20 pl-4 md:pl-4 w-full">
@@ -23,15 +26,15 @@ export default function SiteHeader(props : any) {
               hideMobile: true
             },
             {
-              element: <Link href="" locale="en">EN</Link>,
+              element: <Link href={router.asPath} locale="en">EN</Link>,
               hideMobile: true
             },
             {
-              element: <Link href="" locale="es">ES</Link>,
+              element: <Link href={router.asPath} locale="es" >ES</Link>,
               hideMobile: true
             },
             {
-              element: <HamburgerMenu onClick={() => {
+              element: <HamburgerMenu isActive={props.isMenuOpen} onClick={() => {
                 props.setIsMenuOpen(!props.isMenuOpen)
               }}/>,
               hideDesktop: true

@@ -1,42 +1,46 @@
 import Head from "next/head";
-import Link from "next/link";
+import { useContext } from "react";
 import { work } from "@/localization/en/work/work";
+import {PortableText} from '@portabletext/react'
 import { useRouter } from "next/router";
-import { RiArrowLeftLine } from 'react-icons/ri';
 import Image from "next/image";
 import InfoSection from "@/components/InfoSection/InfoSection";
+import CMSDataContext from "@/context/CMSDataContext";
+
 
 export default function Work(props : any) {
 
   const router = useRouter();
 
   const workSlug = router.query.workSlug;
+
+  const CMSData : any = useContext(CMSDataContext);
   
-  const workData = work.find((work) => {
-    if (work.slug === workSlug) {
+  const workData = CMSData.works.find((work : any) => {
+    if (work.slug.current === workSlug) {
       return work;
     }
   });
 
   return workData && (
-    <main className={`flex flex-col`}>
+    <main className={`flex flex-col h-full`}>
       <Head>
         <title>Coyote Web Studio</title>
       </Head>
-      <InfoSection title={workData.title} backLink={'/work'}>
-        <div className="p-8">
-          <div className="header text-4xl leading-loose my-20 first:mt-0">
-            A detailed and dynamic website that hosts the lore and blog of this exciting new game.
+      <InfoSection title={workData.name} backLink={'/work'}>
+        <div className="w-full aspect-video relative z-20 mb-8">
+          <Image
+            fill
+            src={workData.imageUrl}
+            alt={workData.name}
+          />
+        </div>
+        <div className="px-8">
+          <div className="header text-xl mb-8 first:mt-0">
+            {workData.absctract}
           </div>
-          <div className="w-full aspect-video relative z-20 my-20 border">
-            <Image
-              fill
-              src={'/img/work/shadow-war/top.png'}
-              alt={workData.title}
-            />
-          </div>
-          <div className="header text-2xl leading-loose my-20">
-            Shadow War is a 5v5 competitive PvP action game for PC and Console.
+          <div className="header text-md font-light text-primary-400 dark:text-dark-600 pb-20 [&>p]:mb-6">
+           <PortableText value={workData.content} />
           </div>
         </div>
       </InfoSection>

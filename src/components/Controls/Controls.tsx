@@ -6,7 +6,7 @@ export default function Controls(props : any) {
     <div className={`h-full ${props.className}`}>
       <ul className="flex h-full md:h-full">
         {props.controls.map((control : any, index : number) => (
-          <li key={index} className={`${itemStyles} ${control.hideMobile && 'hidden'} ${control.hideDesktop && 'md:hidden'}`}>
+          <li key={index} className={`${itemStyles} ${control.hideMobile ? 'hidden' : ''} ${control.hideDesktop ? 'md:hidden' : ''}`}>
             {control.element}
           </li>
         ))}

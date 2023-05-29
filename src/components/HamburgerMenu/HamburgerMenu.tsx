@@ -3,11 +3,8 @@ import { useState } from "react";
 
 export default function HamburgerMenu(props : any) {
 
-  const [active, setActive] = useState(false)
-
   const handleHamburgerClick = () => {
-    props.onClick();
-    setActive(!active)
+    props.onClick()
   }
 
   const controlStyles = `absolute h-[2px] w-full bg-primary-500 dark:bg-dark-500 group-hover:dark:bg-dark-50 group-hover:bg-primary-50 transition-all`
@@ -27,7 +24,7 @@ export default function HamburgerMenu(props : any) {
         }
         
       `}</style>
-      <div className={`${active ? 'active' : ''} hamburger-menu relative w-6 h-4 flex items-center flex-column justify-center`} onClick={handleHamburgerClick}>
+      <div className={`${props.isActive ? 'active' : ''} hamburger-menu relative w-6 h-4 flex items-center flex-column justify-center`} onClick={handleHamburgerClick}>
         <div className={`${controlStyles} top-0`}></div>
         <div className={`${controlStyles} top-[50%]`}></div>
         <div className={`${controlStyles} top-[50%]`}></div>

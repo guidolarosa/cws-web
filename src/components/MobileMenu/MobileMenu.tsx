@@ -20,7 +20,7 @@ const MobileMenu = (props: any) => {
       />
       <Controls
         className="mt-auto h-auto z-10"
-        controlStyles="bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex"
+        controlStyles="bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex min-h-0"
         controls={[
           {
             element: (
@@ -50,7 +50,7 @@ const MobileMenu = (props: any) => {
             ),
           },
         ]}
-      ></Controls>
+      />
       <div
         className="absolute top-0 w-full h-full opacity-90 dark:bg-dark-950 bg-primary-50"
         onClick={() => {

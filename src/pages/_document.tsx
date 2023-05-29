@@ -3,17 +3,15 @@ import { useEffect, useState } from 'react'
 
 export default function Document() {
 
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const time = new Date().getHours();
-
     setIsDark(false);
-
   }, []);
 
   return (
-    <Html lang="en" className={isDark ? 'dark' : ''}>
+    <Html lang="en" className={new Date().getHours() > 18 ? 'dark' : ''}>
       <Head />
       <body>
         <Main />
