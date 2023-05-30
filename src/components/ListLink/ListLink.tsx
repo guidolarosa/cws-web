@@ -1,11 +1,17 @@
+import getLocale from "@/localization";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ListLink = (props: any) => {
+  const router = useRouter();
+
   let services: any = [];
   props.data.work.services?.forEach((service: any) => {
     props.data.services.forEach((srcServices: any) => {
       if (service._ref === srcServices._id) {
-        services.push(srcServices.name);
+        console.log(srcServices)
+        if (router.locale != undefined) 
+          services.push(srcServices.name[router.locale]);
       }
     });
   });

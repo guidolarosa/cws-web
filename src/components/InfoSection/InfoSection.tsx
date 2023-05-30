@@ -23,7 +23,7 @@ const InfoSection: React.FC<Props> = ({title, children, backLink}) => {
           <h1 className={`text-4xl flex items-center ${backLink ? 'px-8' : ''}`}>{title}</h1>
         </div>
       </div>
-      <div className={"w-full overflow-auto h-full"}>
+      <div className={"w-full overflow-auto h-full md:max-h-[calc(100vh-224px)] max-h-[calc(100vh-200px)]"}>
         {children}
       </div>
     </div>
