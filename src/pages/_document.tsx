@@ -12,7 +12,9 @@ export default function Document() {
 
   return (
     <Html lang="en" className={new Date().getHours() > 18 ? 'dark' : ''}>
-      <Head />
+      <Head>
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+      </Head>
       <body>
         <Main />
         <NextScript />

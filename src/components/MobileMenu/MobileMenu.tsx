@@ -8,7 +8,7 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 const MobileMenu = (props: any) => {
   return (
     <div
-      className={`absolute top-0 w-full h-full flex flex-col ${
+      className={`absolute top-0 w-full h-full flex flex-col z-50 ${
         !props.isOpen ? "hidden" : ""
       }`}
     >

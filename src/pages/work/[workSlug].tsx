@@ -16,7 +16,7 @@ export default function Work(props: any) {
 
   const CMSData: any = useContext(CMSDataContext);
 
-  const GlobalData : any = useContext(GlobalContext)
+  const GlobalData: any = useContext(GlobalContext);
 
   const workData = CMSData.works.find((work: any) => {
     if (work.slug.current === workSlug) {
@@ -33,7 +33,6 @@ export default function Work(props: any) {
     });
   });
 
-  console.log(workData.content[GlobalData.locale])
   return (
     workData && (
       <main className={`flex flex-col h-full`}>
@@ -41,29 +40,94 @@ export default function Work(props: any) {
           <title>Coyote Web Studio</title>
         </Head>
         <InfoSection title={workData.name} backLink={"/work"}>
-          <div className={`h-12 flex justify-center items-center w-full  border-b bg-primary-200 dark:bg-dark-800`}>
-            <div className={`h-8 flex justify-center items-center dark:bg-dark-950 w-9/12 rounded-sm border bg-primary-50`}>
-              <div>
-                {workData.url}
+          <div
+            className={`h-12 flex justify-center items-center w-full  border-b bg-primary-200 dark:bg-dark-800`}
+          >
+            <div
+              className={`h-8 flex justify-center items-center dark:bg-dark-950 w-9/12 rounded-sm border bg-primary-50`}
+            >
+              <div>{workData.url}</div>
+            </div>
+          </div>
+          <div className="w-full h-[390px] relative z-20 mb-8 border-b flex items-center justify-center flex-col bg-primary-500 dark:bg-dark-700">
+            <div className="flex mt-auto translate-y-5">
+              <div className="flex flex-col items-center">
+                <div className="screen w-[420px] h-[240px] relative border flex bg-primary-100 dark:bg-dark-900 p-1">
+                  <div className="w-[100%] h-[100%] relative border flex overflow-hidden bg-black">
+                    {workData.show_static_thumbnails ? (
+                      <Image
+                        fill
+                        src={workData.imageUrl}
+                        alt={workData.name}
+                        style={{ objectFit: "cover", objectPosition: "top" }}
+                      />
+                    ) : (
+                      <iframe
+                        src={workData.url}
+                        title="W3Schools Free Online Web Tutorials"
+                        className="absolute"
+                        height={"1080"}
+                        width={"1920"}
+                        style={{
+                          transform: "scale(0.2139)",
+                          transformOrigin: "top left",
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="screen-back border w-[40px] h-[60px] dark:bg-dark-900 border-y-0 bg-primary-100" />
+                <div className="screen-back border w-[180px] h-[10px] dark:bg-dark-900 bg-primary-100" />
               </div>
+
+              {workData.mobileImageUrl && (
+                <div className="hidden md:flex screen-mobile w-[120px] h-[220px] relative justify-center items-center ml-[-30px] p-1 bg-primary-100 border dark:bg-dark-900 translate-y-24 ">
+                  <div className="w-full h-full relative border overflow-hidden bg-black">
+                    {workData.show_static_thumbnails ? (
+                      <Image
+                        fill
+                        src={workData.mobileImageUrl}
+                        alt={workData.name}
+                        style={{ objectFit: "cover", objectPosition: "top" }}
+                      />
+                    ) : (
+                      <iframe
+                        src={workData.url}
+                        title="W3Schools Free Online Web Tutorials"
+                        className="absolute"
+                        height={"720"}
+                        width={"360"}
+                        style={{
+                          transform: "scale(0.32)",
+                          transformOrigin: "top left",
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
+            {/* <div className="table border h-16 w-full dark:bg-dark-950 border-b-0 border-x-0" /> */}
           </div>
-          <div className="w-full aspect-video relative z-20 mb-8 bg-black border-b">
-            <Image fill src={workData.imageUrl} alt={workData.name} style={{objectFit: 'contain'}}/>
-          </div>
-          <div className="px-8">
+          <div className="px-8 pt-10">
             <div className="header text-xl mb-8 first:mt-0">
-              {workData.abstract[GlobalData.locale]}
+              {workData.abstract && workData.abstract[GlobalData.locale]}
             </div>
-            <div className="text-md font-light text-primary-400 dark:text-dark-600 pb-20 [&>p]:mb-6 last:[&>p]:mb-0">
-              <PortableText value={workData.content[GlobalData.locale]} />
-            </div>
+            {workData.content && (
+              <div className="text-md font-light text-primary-400 dark:text-dark-600 pb-20 [&>p]:mb-6 last:[&>p]:mb-0">
+                <PortableText value={workData.content[GlobalData.locale]} />
+              </div>
+            )}
           </div>
           <div className={"px-8"}>
-            <h1 className={'text-2xl mb-8'}>Our Stack</h1>
-            <div className={'flex'}>
+            <h1 className={"text-2xl mb-8"}>Our Stack</h1>
+            <div className={"flex flex-wrap"}>
               {usedTools.map((tool: any, index: number) => (
-                <ToolCard logoUrl={tool.imageUrl} key={index} name={tool.name}/>
+                <ToolCard
+                  logoUrl={tool.imageUrl}
+                  key={index}
+                  name={tool.name}
+                />
               ))}
             </div>
           </div>

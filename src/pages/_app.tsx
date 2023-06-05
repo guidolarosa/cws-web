@@ -7,30 +7,29 @@ import GlobalContext from "@/context/GlobalContext";
 import SiteHeader from "@/components/SiteHeader/SiteHeader";
 import { Unbounded } from "next/font/google";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import TJSBlob from "@/components/TJSScene/TJSBlob";
-import TJSBounce from "@/components/TJSScene/TJSBounce";
-import TJSTorus from "@/components/TJSScene/TJSTorus";
-import TJSScene from "@/components/TJSScene/TJSScene";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import InteractivePanel from "@/components/InteractivePanel/InteractivePanel";
 
 const unbounded = Unbounded({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
-
+  const [hoveredWork, setHoveredWork] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
-  const CMSData = {
+
+  const CMSData : any = {
     works: pageProps.works,
     services: pageProps.services,
     tools: pageProps.tools
   };
 
-  const GlobalData = {
-    locale: router.locale
-  }
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const GlobalData : any = {
+    locale: router.locale,
+    hoveredWork: hoveredWork,
+    setHoveredWork: setHoveredWork
+  };
 
   return (
     <GlobalContext.Provider value={GlobalData}>
@@ -49,17 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
                 <MobileMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
               </div>
-              <div className="hidden lg:flex flex-col lg:w-1/4 border-l">
-                <div className="border-b h-1/3 w-full last:border-b-0">
-                  <TJSTorus />
-                </div>
-                <div className="border-b h-1/3 w-full last:border-b-0">
-                  <TJSBlob resolution={8} wireframe />
-                </div>
-                <div className="border-b h-1/3 w-full last:border-b-0">
-                  <TJSScene scale={1.5} />
-                </div>
-              </div>
+              <InteractivePanel />
             </div>
           </div>
         </Suspense>
@@ -84,7 +73,9 @@ App.getInitialProps = async (ctx: NextPageContext) => {
     content,
     tools,
     url,
-    "imageUrl": thumbnail.asset->url
+    show_static_thumbnails,
+    "imageUrl": thumbnail.asset->url,
+    "mobileImageUrl": mobile_thumbnail.asset->url,
   }`);
 
   const tools: any = await client.fetch(`*[_type == "tool"]{
