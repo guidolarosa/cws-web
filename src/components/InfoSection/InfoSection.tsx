@@ -11,7 +11,7 @@ interface Props {
 const InfoSection: React.FC<Props> = ({ title, children, backLink }) => {
   return (
     <div className="h-full w-full flex flex-col overflow-y-hidden">
-      <div className={"h-24 w-full border-b flex"}>
+      <div className={"h-16 md:h-24 w-full border-b flex"}>
         <div
           className={`flex items-center w-full bg-primary-100 dark:bg-dark-900 ${
             !backLink ? "px-4" : ""
@@ -24,7 +24,7 @@ const InfoSection: React.FC<Props> = ({ title, children, backLink }) => {
                 href={backLink}
               >
                 <RiArrowLeftLine
-                  size={"3rem"}
+                  className={'text-xl md:text-2xl'}
                   style={{ transform: "scale(2)" }}
                 />
               </Link>
@@ -39,7 +39,7 @@ const InfoSection: React.FC<Props> = ({ title, children, backLink }) => {
       </div>
       <div
         className={
-          "w-full overflow-auto h-full md:max-h-[calc(100vh-224px)] max-h-[calc(100vh-200px)]"
+          "w-full overflow-auto h-full md:max-h-[calc(100vh-224px)] max-h-[calc(100vh-168px)]"
         }
       >
         {children}

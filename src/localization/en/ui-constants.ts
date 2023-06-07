@@ -9,7 +9,8 @@ export const navigation = [
   },
   {
     label: 'NEWS',
-    href: '/news'
+    href: '/news',
+    disabled: true
   },
   {
     label: 'SERVICES',

@@ -49,8 +49,8 @@ export default function Work(props: any) {
               <div>{workData.url}</div>
             </div>
           </div>
-          <div className="w-full h-[390px] relative z-20 mb-8 border-b flex items-center justify-center flex-col bg-primary-500 dark:bg-dark-700">
-            <div className="flex mt-auto translate-y-5">
+          <div className="w-full h-[280px] md:h-[390px] relative z-20 mb-8 border-b flex items-center justify-center flex-col bg-primary-500 dark:bg-dark-700">
+            <div className="flex mt-auto translate-y-5 scale-[0.8] md:scale-100 origin-bottom">
               <div className="flex flex-col items-center">
                 <div className="screen w-[420px] h-[240px] relative border flex bg-primary-100 dark:bg-dark-900 p-1">
                   <div className="w-[100%] h-[100%] relative border flex overflow-hidden bg-black">

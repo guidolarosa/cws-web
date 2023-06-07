@@ -19,7 +19,7 @@ module.exports = {
     colors: {
       current: 'currentColor',
       primary: colors.red,
-      dark: colors.yellow,
+      dark: colors.lime,
       ...colors
     }
   },

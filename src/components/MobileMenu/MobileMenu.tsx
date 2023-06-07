@@ -8,7 +8,7 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 const MobileMenu = (props: any) => {
   return (
     <div
-      className={`absolute top-0 w-full h-full flex flex-col z-50 ${
+      className={`absolute top-0 w-full h-full flex flex-col z-50 overflow-hidden ${
         !props.isOpen ? "hidden" : ""
       }`}
     >
@@ -19,8 +19,8 @@ const MobileMenu = (props: any) => {
         }}
       />
       <Controls
-        className="mt-auto h-auto z-10"
-        controlStyles="bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex min-h-0"
+        className="mt-auto z-10"
+        controlStyles="bg-primary-50 dark:bg-dark-950 h-16 border-t first:border-l-0 flex min-h-0 aspect-square"
         controls={[
           {
             element: (

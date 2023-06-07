@@ -24,7 +24,7 @@ const ListLink = (props: any) => {
       onMouseLeave={props.onMouseLeave}
     >
       <li className="flex flex-col">
-        <span className="mr-4 text-2xl mb-2">{props.data.work.name}</span>
+        <span className="mr-4 text-xl md:text-2xl mb-2">{props.data.work.name}</span>
         <span className="font-light text-xs opacity-70">
           {services.map(
             (service: any, index: any) =>
