@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import { createClient } from "next-sanity";
 import CMSDataContext from "@/context/CMSDataContext";
 import GlobalContext from "@/context/GlobalContext";
-import SiteHeader from "@/components/SiteHeader/SiteHeader";
+import Header from "@/components/Header/Header";
 import { Unbounded } from "next/font/google";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <div
             className={`${unbounded.className} h-[100vh] flex flex-col overflow-hidden text-primary-500 dark:text-dark-500 bg-primary-50 dark:bg-dark-950`}
           >
-            <SiteHeader setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+            <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
             <div className={"w-full h-[calc(100vh-130px)] flex grow"}>
               <Sidebar />
               <div

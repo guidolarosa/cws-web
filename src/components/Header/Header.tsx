@@ -6,18 +6,18 @@ import Controls from '../Controls/Controls';
 import { useRouter } from "next/router";
 import TJSBlob from '../TJSScene/TJSBlob';
 
-export default function SiteHeader(props : any) {
+export default function Header(props : any) {
 
   const router : any = useRouter();
   // debugger;
   return (
     <header>
       <div className="border-0 border-b flex justify-between items-center h-16 md:h-20 pl-4 md:pl-4 w-full">
-        <div className="w-20 h-full">
+        <div className="mr-2 md:mr-0 w-12 h-12 md:w-20 md:h-full">
           <TJSBlob />
         </div>
         <Link href={"/"} className="flex">
-          <h1 className={"text-xl text-3xl:sm md:text-4xl flex"}>
+          <h1 className={"text-2xl text-xl:sm md:text-4xl flex"}>
             Blob Studio
           </h1>
         </Link>
