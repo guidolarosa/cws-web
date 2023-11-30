@@ -4,6 +4,7 @@ import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import Controls from '../Controls/Controls';
 import { useRouter } from "next/router";
+import TJSBlob from '../TJSScene/TJSBlob';
 
 export default function SiteHeader(props : any) {
 
@@ -12,9 +13,12 @@ export default function SiteHeader(props : any) {
   return (
     <header>
       <div className="border-0 border-b flex justify-between items-center h-16 md:h-20 pl-4 md:pl-4 w-full">
+        <div className="w-20 h-full">
+          <TJSBlob />
+        </div>
         <Link href={"/"} className="flex">
           <h1 className={"text-xl text-3xl:sm md:text-4xl flex"}>
-            Coyote Web Studio
+            Blob Studio
           </h1>
         </Link>
         <Controls 

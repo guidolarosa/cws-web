@@ -10,7 +10,7 @@ export default function Home(props : any) {
   return (
     <main className={`flex w-full h-full bg-stone-800`}>
       <Head>
-        <title>Coyote Web Studio</title>
+        <title>Blob Studio</title>
       </Head>
       <div className={'w-full flex items-center justify-center bg-primary-100 dark:bg-dark-900'}>
         {/* <TJSScene /> */}

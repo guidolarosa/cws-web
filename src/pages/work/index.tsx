@@ -17,7 +17,7 @@ export default function Work(props: any) {
   return (
     <main className={`flex flex-col h-full`}>
       <Head>
-        <title>Coyote Web Studio</title>
+        <title>Blob Studio</title>
       </Head>
       <InfoSection title="Our Work">
         <div>

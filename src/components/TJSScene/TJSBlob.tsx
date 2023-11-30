@@ -187,12 +187,12 @@ const ThreeJSPageScene = (props: any) => {
           intensity={4}
         />
         <CustomPointLight color={colors.amber['500']} position={[6, 4, 4]} intensity={10} />
-        <DistortedSphereMesh {...props} position={[-10, -10, -10]} color={blobColor}/>
+        {/* <DistortedSphereMesh {...props} position={[-10, -10, -10]} color={blobColor}/>
         <DistortedSphereMesh {...props} position={[10, -10, 10]} color={blobColor}/>
         <DistortedSphereMesh {...props} position={[-10, 10, 10]} color={blobColor}/>
         <DistortedSphereMesh {...props} position={[-12, -8, 5]} color={blobColor}/>
         <DistortedSphereMesh {...props} position={[12, 8, -3]} color={blobColor}/>
-        <DistortedSphereMesh {...props} position={[8, -4, 5]} color={blobColor}/>
+        <DistortedSphereMesh {...props} position={[8, -4, 5]} color={blobColor}/> */}
         <DistortedSphereMesh {...props} position={[0, 0, 0]} color={blobColor}/>
         {/* <DistortedSphereMesh {...props} position={[-4, 0, 0]} color={blobColor}/>
         <DistortedSphereMesh {...props} position={[-4, 0, 0]} color={blobColor}/>

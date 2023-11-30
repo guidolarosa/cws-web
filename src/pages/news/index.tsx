@@ -12,7 +12,7 @@ export default function News() {
   return (
     <main className={`flex flex-col`}>
       <Head>
-        <title>Coyote Web Studio</title>
+        <title>Blob Studio</title>
       </Head>
       <InfoSection title="News">
         <ul>

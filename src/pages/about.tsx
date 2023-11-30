@@ -11,7 +11,7 @@ export default function About() {
   return (
     <main className={`flex flex-col`}>
       <Head>
-        <title>Coyote Web Studio | About</title>
+        <title>Blob Studio | About</title>
       </Head>
       <InfoSection title="About us">
         <div className="p-4">

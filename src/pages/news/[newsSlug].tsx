@@ -22,7 +22,7 @@ export default function Work(props : any) {
   return newsData && (
     <main className={`flex flex-col`}>
       <Head>
-        <title>Coyote Web Studio</title>
+        <title>Blob Studio</title>
       </Head>
       <InfoSection title={newsData.title} backLink={'/news'}>
         <div className="p-8">
